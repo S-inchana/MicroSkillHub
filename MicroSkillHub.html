@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Micro Skill Hub - Attractive Prototype</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+       
+        :root {
+           
+            --color-primary-dark: #1A535C;
+            --color-secondary-vibrant: #4ECDC4; 
+            --color-accent-cta: #FF6B6B;
+            --color-background-light: #FBFFFE; 
+            --color-background-mid: #EFF6F7;
+            --color-text-dark: #2E2E2E; 
+            --color-white: #ffffff;
+            --header-top-height: 50px;
+            --nav-height: 60px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-white);
+            scroll-behavior: smooth;
+           
+            padding-top: calc(var(--header-top-height) + var(--nav-height)); 
+        }
+
+        .container {
+            max-width: 1900px; 
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+      
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+      
+        .top-header-bar {
+            background-color: var(--color-primary-dark);
+            height: var(--header-top-height);
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--color-white);
+        }
+        
+        .logo-img-placeholder {
+            width: 30px;
+            height: 30px;
+            background-color: var(--color-secondary-vibrant);
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+      
+        .nav-bar {
+            background-color: var(--color-white);
+            border-bottom: 2px solid var(--color-background-mid);
+            height: var(--nav-height);
+            /* height: 60px; */
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--color-text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 0;
+            transition: color 0.2s, border-bottom 0.2s ease;
+            font-size: 0.89rem;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--color-accent-cta);
+            border-bottom: 3px solid var(--color-accent-cta);
+        }
+
+        section {
+            padding: 100px 0; 
+            min-height: 70vh; 
+            background-color: var(--color-white);
+            display: flex;
+            align-items: center;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--color-background-mid);
+        }
+
+        .section-header {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-primary-dark);
+            margin-bottom: 3rem;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 50px; 
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent-cta);
+            color: var(--color-white);
+            border: 2px solid var(--color-accent-cta);
+        }
+        
+        .btn-secondary {
+            background-color: var(--color-white);
+            color: var(--color-primary-dark);
+            border: 2px solid var(--color-primary-dark);
+            margin-left: 1.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+
+        #home {
+            min-height: 85vh;
+            text-align: center;
+        }
+
+        .tagline {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--color-primary-dark);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .placeholder-visual {
+            height: 250px;
+            width: 100%;
+            max-width: 800px;
+            margin: 3rem auto;
+            background: linear-gradient(45deg, var(--color-secondary-vibrant), var(--color-primary-dark));
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        #about .about-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        #about .about-content .card {
+            flex: 1;
+            padding: 2rem;
+            border-top: none;
+            background-color: var(--color-white);
+        }
+
+        .programs-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+        
+        .program-item {
+            background-color: var(--color-white);
+            padding: 1.5rem;
+            border-left: 5px solid var(--color-secondary-vibrant);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            border-radius: 4px;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .program-item::before {
+            content: '✓';
+            color: var(--color-accent-cta);
+            font-size: 1.2rem;
+            position: absolute;
+            left: -10px;
+            top: 1.5rem;
+            background-color: var(--color-white);
+            padding: 0 5px;
+        }
+
+        .program-item h4 {
+            color: var(--color-primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+      
+        #features .single-feature-card {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0 8px 15px rgba(26, 83, 92, 0.15); 
+            background-color: var(--color-white);
+        }
+        
+        #features .feature-points {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr ; 
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+        
+        #features .feature-points li {
+            padding: 10px;
+            border-bottom: 1px dashed var(--color-border-light);
+            position: relative;
+            font-weight: 500;
+        }
+        
+        #features .feature-points li::before {
+            content: '⭐';
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        #impact .impact-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        #impact .chart-container {
+            flex: 1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: var(--color-white);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        #impact .success-story {
+            flex: 1;
+            background-color: var(--color-secondary-vibrant);
+            color: var(--color-primary-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+       
+        #get-involved .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+       
+        #gallery .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; 
+            gap: 15px;
+            margin-top: 2rem;
+        }
+        
+        #gallery .gallery-card {
+            aspect-ratio: 16 / 9;
+            background-color: var(--color-background-mid);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        #gallery .gallery-card:hover {
+            transform: scale(1.03);
+        }
+
+        .footer {
+            background-color: var(--color-primary-dark);
+            color: var(--color-white);
+            padding: 3rem 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .contact-details-footer {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 1.5rem;
+        }
+        
+        .contact-item {
+            text-align: left;
+        }
+
+        .contact-item h4 {
+            color: var(--color-secondary-vibrant);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .language-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            background-color: #0c20d6;
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(253, 0, 0, 0.5);
+            transition: background-color 0.2s;
+            z-index: 1001;
+        }
+        
+        .language-toggle:hover {
+            background-color: #111c10;
+        }
+
+     
+        @media (max-width: 1092px) {
+            .tagline {
+                font-size: 2.5rem;
+            }
+         
+            #about .about-content, #impact .impact-content {
+                flex-direction: column;
+            }
+       
+            #features .feature-points {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile (<= 768px) - Header, Nav, and Grids collapse further */
+        @media (max-width: 468px) {
+           
+            .top-header-bar, .nav-bar {
+                height: auto;
+            }
+            .nav-bar .container {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+    
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            body {
+                padding-top: 110px; 
+            }
+            .tagline {
+                font-size: 2rem;
+            }
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 0.8rem;
+                display: block;
+            }
+         
+            .contact-details-footer {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            .contact-item {
+                text-align: center;
+            }
+           
+            #gallery .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .language-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="top-header-bar">
+            <a href="#home" class="logo-container">
+                <div class="logo-img-placeholder">M</div>
+                <span class="logo-text">Micro Skill Hub</span>
+            </a>
+        </div>
+        
+        <div class="nav-bar">
+            <div class="container">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#impact">Impact</a></li>
+                        <li><a href="#get-involved">Get Involved</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container" style="max-width: 900px;">
+            <h1 class="tagline">Empowering Rural Communities through Skills & Opportunities</h1>
+            
+            <div class="placeholder-visual">
+                Primary Visual: Solar-Powered Hub & Training Image Placeholder
+            </div>
+            
+            <div class="hero-actions">
+                <a href="#get-involved" class="btn btn-primary">Join a Course</a>
+                <a href="#get-involved" class="btn btn-secondary">Partner With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-header">About Us</h2>
+
+            <div class="about-content">
+                <div class="card">
+                    <h4>Vision & Mission</h4>
+                    <p>Our long-term vision is to create a self-sustaining network of micro-hubs that catalyze economic independence across rural India. Our mission is delivering accessible, high-quality, and contextually relevant skill training.</p>
+                </div>
+                <div class="card">
+                    <h4>Core Focus</h4>
+                    <p>We are dedicated to uplifting women, persons with disabilities (PWD), and underserved youth within rural communities, ensuring equitable access to market-ready skills and job creation opportunities.</p>
+                </div>
+                <div class="card">
+                    <h4>Origin Story</h4>
+                    <p>Born from a recognized need to bridge the technology and skill gap, the Micro Skill Hub concept was prototyped to bring decentralized, modular, and affordable learning centers directly to the villages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs">
+        <div class="container">
+            <h2 class="section-header">Our Programs</h2>
+            
+            <div class="programs-list">
+                <div class="program-item">
+                    <h4>Vocational Courses</h4>
+                    <p>Practical skills like tailoring, food processing, and specialized handicrafts.</p>
+                </div>
+                <div class="program-item">
+                    <h4>Digital Skills</h4>
+                    <p>From computer literacy and e-commerce to AI basics.</p>
+                </div>
+                <div class="program-item">
+                    <h4>Entrepreneurship</h4>
+                    <p>Focus on business setup, marketing, and financial literacy.</p>
+                </div>
+                <div class="program-item">
+                    <h4>Course Levels</h4>
+                    <p>Structured from Basic fundamentals through Advanced certification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2 class="section-header">Unique Features</h2>
+            
+            <div class="card single-feature-card">
+                <h4 style="color: var(--color-accent-cta); font-size: 1.3rem; text-align: center;">Our Innovative Approach to Skill Development</h4>
+                <ul class="feature-points">
+                    <li>Solar-Powered Low-Cost Hubs</li>
+                    <li>Hub-on-Wheels Outreach Program</li>
+                    <li>Childcare Support for Mothers</li>
+                    <li>Local Language Instruction</li>
+                    <li>QR-Based Digital Certification</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="impact">
+        <div class="container">
+            <h2 class="section-header">Measuring Our Impact</h2>
+            
+            <div class="impact-content">
+                
+                <div class="chart-container">
+                    <h4>Expected Outcomes Rate (500+ Trainees)</h4>
+                    <!--Simple SVG Pie Chart -->
+                    <svg viewBox="0 0 36 36" class="circular-chart" style="width: 150px; height: 150px; margin: 1rem auto; display: block;">
+                        <path class="circle-bg"
+                            d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                            fill="none"
+                            stroke="#f0f0f0"
+                            stroke-width="3"
+                        />
+                        <!-- Representing 65% outcome rate -->
+                        <path class="circle"
+                            d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                            fill="none"
+                            stroke="var(--color-secondary-vibrant)"
+                            stroke-width="3"
+                            stroke-dasharray="65, 100"
+                            stroke-linecap="round"
+                        />
+                        <text x="18" y="20.35" class="percentage" fill="var(--color-primary-dark)" font-size="5" text-anchor="middle" font-weight="700">65%</text>
+                    </svg>
+                    
+                    <h4>Other Impacts</h4>
+                    <!-- Simple SVG Bar Chart Placeholder -->
+                    <svg viewBox="0 0 100 50" style="width: 90%; height: 100px; margin-top: 1rem;">
+                        <rect x="5" y="40" width="25" height="10" fill="var(--color-primary-dark)"></rect>
+                        <text x="18" y="47" font-size="4" fill="white" text-anchor="middle">SDG 4</text>
+                        
+                        <rect x="35" y="30" width="25" height="20" fill="var(--color-secondary-vibrant)"></rect>
+                        <text x="48" y="47" font-size="4" fill="white" text-anchor="middle">SDG 5</text>
+                        
+                        <rect x="65" y="10" width="25" height="40" fill="var(--color-accent-cta)"></rect>
+                        <text x="78" y="47" font-size="4" fill="white" text-anchor="middle">SDG 8</text>
+                    </svg>
+                    <p style="margin-top: 10px; font-size: 0.85rem;">Alignment with SDGs 4, 5, 8, 10, 17.</p>
+                </div>
+                
+                <div class="success-story">
+                    <h4 style="color: var(--color-primary-dark); font-size: 1.5rem; margin-bottom: 1rem;">Success Story: Empowerment in Action</h4>
+                    <p style="font-style: italic; color: #1A535C;">"The Hub didn't just teach me stitching; it taught me how to run a business. My tailoring unit is now providing jobs for three other women in my village. This is true independence."</p>
+                    <p style="margin-top: 1rem; font-weight: 700;">— A Certified Trainee, Economic Upliftment Case Study</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="get-involved" style="text-align: center; min-height: 40vh;">
+        <div class="container">
+            <h2 class="section-header">Join the Mission</h2>
+            
+            <p style="max-width: 700px; margin: 0 auto 2rem auto; font-size: 1.1rem;">Your involvement is the engine of rural empowerment. Connect with us based on your interest.</p>
+
+            <div class="hero-actions">
+                <a href="#footer" class="btn btn-primary">Enroll as a Learner</a>
+                <a href="#footer" class="btn btn-secondary">Hire Skilled Workers</a>
+                <a href="#footer" class="btn btn-primary">Sponsor / Partner</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-header">Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card"><img src="https://th.bing.com/th/id/OIP.-WP6s9Yj2Tv3QqbT68J7lwHaE7?w=216&h=180&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3" alt="Rural skill devlopmenet" class="imgholder"> </div>
+                <div class="gallery-card">Product Showcase</div>
+                <div class="gallery-card"><img src="https://th.bing.com/th/id/OIP.7rvbUGYtxWiPWfGy3cPTeAHaFj?w=191&h=180&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3" alt="Rural skill devlopmenet" class="imgholder"></div>
+                <div class="gallery-card">Trainee Graduation</div>
+                <div class="gallery-card"><img src="https://th.bing.com/th/id/OIP.Gsd0ccMIZSzTvMftY0FXqwHaFh?w=222&h=180&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3" alt="Rural skill devlopmenet" class="imgholder"></div>
+                <div class="gallery-card">E-commerce Class</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer">
+        <div class="container">
+            <h3 style="color: var(--color-secondary-vibrant); font-size: 1.8rem; margin-bottom: 2rem;">Contact & Connect</h3>
+
+            <div class="contact-details-footer">
+                <div class="contact-item">
+                    <h4>📞 Phone</h4>
+                    <p>+91 12312312312</p>
+                </div>
+                <div class="contact-item">
+                    <h4>✉️ Email</h4>
+                    <p>info@microskillhub.in</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📍 Address</h4>
+                    <p>Rural Development Center , </p>
+                    <p>ATRIA UNIVERSITY , Blore , Karnataka , IN</p>
+                </div>
+            </div>
+            
+            <p style="font-size: 0.8rem; margin-top: 1rem;">&copy; 2025 The Micro Skill Hub Prototype. All Rights Reserved. | Built for Rural Empowerment.</p>
+        </div>
+    </footer>
+    
+    <div class="language-toggle" title="Change Language (English)">🌐</div>
+
+</body>
+</html>
